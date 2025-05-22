@@ -1,0 +1,92 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{% static 'css/mystyle.css' %}">
+    <title>Employee Base Page</title>
+    <style>
+        .list-group-item {
+            padding: 8px !important;
+        }
+
+        .list-group-item:hover {
+            font-weight: bold;
+        }
+
+        img {
+            border: 2px solid black !important;
+        }
+
+    </style>
+</head>
+
+<body style="background-color: #0041B0;">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2 p-0" style="background-color: #0041B0;">
+                <center><img src="{% static 'images/icon.jpg' %}" alt="Employee icon image" width="100px" height="100px"
+                        class="img-thumbnail rounded-circle my-3"></center>
+                <div class="list-group">
+                    <a style="border:2px solid black" href="{% url 'emp_home' %}"
+                        class="list-group-item list-group-item-info list-group-item-action text-white bg-secondary ">Dashboard</a>
+
+                    <a style="border:2px solid black" href="{% url 'profile' %}"
+                        class="list-group-item list-group-item-info list-group-item-action text-white bg-secondary  ">Profile</a>
+
+                    <a style="border:2px solid black" href="{% url 'my_experience' %}"
+                        class="list-group-item list-group-item-info list-group-item-action text-white bg-secondary ">My
+                        Experience</a>
+
+                    <a style="border:2px solid black" href="{% url 'edit_myexperience' %}"
+                        class="list-group-item list-group-item-info list-group-item-action text-white bg-secondary ">Edit
+                        Work Experience</a>
+
+                    <a style="border:2px solid black" href="{% url 'my_education' %}"
+                        class="list-group-item list-group-item-info list-group-item-action text-white bg-secondary ">My
+                        Education</a>
+
+                    <a style="border:2px solid black" href="{% url 'edit_myeducation' %}"
+                        class="list-group-item list-group-item-info list-group-item-action text-white bg-secondary ">Edit
+                        My
+                        Education</a>
+
+                    <a style="border:2px solid black" href="{% url 'emp_view_work_detail' %}"
+                        class="list-group-item list-group-item-info list-group-item-action text-white bg-secondary ">View
+                        Current Work Details</a>
+
+
+
+                </div>
+            </div>
+
+            <div class="col-sm-10 p-0">
+                <div class="container-fluid p-2">
+                    <h5 class="text-center p-3"
+                        style="border:2px solid black; font-weight: bold; background-color: white; border-radius: 7px;">
+                        Employee Record
+                        Management System</h5>
+
+                    <div class="card shadow" style="min-height:88vh; ">
+                        <div class="card-body">
+                            {% block main %}
+
+
+                            {% endblock %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

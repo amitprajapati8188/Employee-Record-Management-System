@@ -1,0 +1,67 @@
+{% extends 'admin_base.html' %}
+{% block main %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>View All Employees Current Work Detail</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+    <div class="card shadow m-2 bg-body rounded">
+        <div class="card-body">
+            <h5 class="p-2 text-danger" style="border-bottom:2px solid orange;">Employee Current Work Details</h5>
+            <div class="container-fluid">
+                <div class="table-responsive">
+                    <table id="example" class="table table-striped table-hover text-center table-bordered">
+                        <thead>
+                            <tr>
+                                <th class="text-light bg-danger">Sr No.</th>
+                                <th class="text-light bg-danger">Emp Code</th>
+                                <th class="text-light bg-danger">First Name</th>
+                                <th class="text-light bg-danger">Last Name</th>
+                                <th class="text-light bg-danger">Department</th>
+                                <th class="text-light bg-danger">Designation</th>
+                                <th class="text-light bg-danger">Salary</th>
+                                <th class="text-light bg-danger">Joining Date</th>
+                                <th class="text-light bg-danger">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for i in employee %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td>{{ i.empcode }}</td>
+                                <td>{{ i.user.first_name }}</td>
+                                <td>{{ i.user.last_name }}</td>
+                                <td>{{ i.empdept }}</td>
+                                <td>{{ i.designation }}</td>
+                                <td>₹ {{ i.salary }}</td>
+                                <td>{{ i.joiningdate }}</td>
+                                <td>
+                                    <a href="{% url 'admin_edit_work_profile' i.user.id %}" class="btn btn-primary">Edit Work Profile</a>
+                                    <!-- <a href="{% url 'admin_delete_employee' i.user.id %}" class="btn btn-danger">Delete</a> -->
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends 'admin_base.html' %}
+{% block main %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Filter Employees</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+    <div class="card shadow m-2 bg-body rounded">
+        <div class="card-body">
+            <h5 class="p-2 text-danger" style="border-bottom:2px solid orange;">Filter Employees</h5>
+            <div class="container-fluid">
+
+                <form method="get">
+                    {{ filter.form.as_p }}
+                    <button type="submit" class="btn btn-primary">Filter</button>
+                </form>
+
+                <div class="table-responsive">
+                    <table id="example" class="table table-striped table-hover text-center table-bordered">
+                        <thead>
+                            <tr>
+                                <th class="text-light bg-danger">Sr No.</th>
+                                <th class="text-light bg-danger">Emp Code</th>
+                                <th class="text-light bg-danger">Email Id</th>
+                                <th class="text-light bg-danger">Department</th>
+                                <th class="text-light bg-danger">Designation</th>
+                                <th class="text-light bg-danger">Salary</th>
+                                <th class="text-light bg-danger">Joining Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for employee in filter.qs %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td>{{ employee.empcode }}</td>
+                                <td>{{ employee.user.username }}</td>
+                                <td>{{ employee.empdept }}</td>
+                                <td>{{ employee.designation }}</td>
+                                <td>₹ {{ employee.salary }}</td>
+                                <td>{{ employee.joiningdate }}</td>
+                            </tr>
+                            {% empty %}
+                            <tr><td colspan="7">No results found.</td></tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+{% endblock %}

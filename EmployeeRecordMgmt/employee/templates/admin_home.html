@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Home Page</title>
+</head>
+
+<body>
+    {% extends 'admin_base.html' %}
+
+    {% block main%}
+
+    <div class="d-flex justify-content-between align-items-center mb-3" style="border-bottom:2px solid red;">
+        <h4 class="text-danger p-2 m-0">Admin Dashboard</h4>
+        <div class="mb-3">
+            <a href="{% url 'admin_change_password' %}" class="btn btn-primary mt-0">Change Password</a>
+            <a href="{% url 'logout' %}" class="btn btn-danger mx-2">Logout</a>
+        </div>
+
+    </div>
+
+    <div class="row text-center">
+        <div class="col-sm-12 p-2">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h4 class="text-success">Welcome Back To Employee Record Management System</h4>
+                    <h4 class="my-4 text-capitalize" style="font-weight: bold;">Admin</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% endblock%}
+</body>
+
+</html>

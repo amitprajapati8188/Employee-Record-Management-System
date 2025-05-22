@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Edit Work Experience</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Latest Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Latest Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+
+
+</head>
+
+<body>
+    {% extends 'emp_base.html' %}
+
+    {% block main%}
+
+
+    <div class="card shadow  m-2 bg-body rounded">
+        <div class="card-body">
+            <a href="{% url 'my_experience' %}" class="btn btn-primary btn-sm float-end text-decoration-none"> View Work
+                Experience</a>
+            <h5 class="p-2 text-danger  mb-4" style="border-bottom:2px solid orange">Edit Work Experiencee</h5>
+            <div class="container-fluid">
+                <form action="/edit_myexperience" method="POST">
+                    {% csrf_token %}
+                    <table class=" table table-bordered border-dark ">
+                        <tr>
+                            <th>First Company Name</th>
+                            <td><input type="text" name="company1name" value="{{experience.company1name}}"
+                                    class="form-control"></td>
+                        </tr>
+
+                        <tr>
+                            <th>First Job Designation</th>
+                            <td><input type="text" name="company1desig" value="{{experience.company1desig}}"
+                                    class="form-control"></td>
+                        </tr>
+
+                        <tr>
+                            <th>First Job Salary</th>
+                            <td><input type="text" name="company1salary" value="{{experience.company1salary}}"
+                                    class="form-control"></td>
+                        </tr>
+
+                        <tr>
+                            <th>First Job Duration</th>
+                            <td><input type="text" name="company1duration" value="{{experience.company1duration}}"
+                                    class="form-control"></td>
+                        </tr>
+                    </table>
+
+                    <table class=" table table-bordered border-dark ">
+                        <tr>
+                            <th>Second Company Name</th>
+                            <td><input type="text" name="company2name" value="{{experience.company2name}}"
+                                    class="form-control"></td>
+                        </tr>
+
+                        <tr>
+                            <th>Second Job Designation</th>
+                            <td><input type="text" name="company2desig" value="{{experience.company2desig}}"
+                                    class="form-control"></td>
+                        </tr>
+
+                        <tr>
+                            <th>Second Job Salary</th>
+                            <td><input type="text" name="company2salary" value="{{experience.company2salary}}"
+                                    class="form-control"></td>
+                        </tr>
+
+                        <tr>
+                            <th>Second Job Duration</th>
+                            <td><input type="text" name="company2duration" value="{{experience.company2duration}}"
+                                    class="form-control"></td>
+                        </tr>
+                    </table>
+
+                    <table class=" table table-bordered border-dark ">
+                        <tr>
+                            <th>Third Company Name</th>
+                            <td><input type="text" name="company3name" value="{{experience.company3name}}"
+                                    class="form-control"></td>
+                        </tr>
+
+                        <tr>
+                            <th>Third Job Designation</th>
+                            <td><input type="text" name="company3desig" value="{{experience.company3desig}}"
+                                    class="form-control"></td>
+                        </tr>
+
+                        <tr>
+                            <th>Third Job Salary</th>
+                            <td><input type="text" name="company3salary" value="{{experience.company3salary}}"
+                                    class="form-control"></td>
+                        </tr>
+
+                        <tr>
+                            <th>Third Job Duration</th>
+                            <td><input type="text" name="company3duration" value="{{experience.company3duration}}"
+                                    class="form-control"></td>
+                        </tr>
+                    </table>
+
+                    <center><input type="submit" value="Submit" class="btn btn-primary m-2 px-3"></center>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    {% if error == "no" %}
+    <script>
+        alert("Your work experience has been updated successfully...");
+        window.location.href = "{% url 'my_experience' %}"
+
+    </script>
+    {% endif %}
+
+    {% if error == "yes" %}
+    <script>
+        alert("Something went wrong. Please try again...");
+    </script>
+    {% endif %}
+
+    {% endblock%}
+
+</body>
+
+</html>

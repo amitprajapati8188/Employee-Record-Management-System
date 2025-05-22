@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Edit Employee Education</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Latest Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Latest Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+
+
+</head>
+
+<body>
+    {% extends 'admin_base.html' %}
+
+    {% block main%}
+
+
+    <div class="card shadow  m-2 bg-body rounded">
+        <div class="card-body">
+            <h5 class="p-2 text-danger  mb-4" style="border-bottom:2px solid orange">Edit Employee Education Detail</h5>
+            <div class="container-fluid">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <table class=" table table-bordered border-dark ">
+                        <tr>
+                            <th>PG Course</th>
+                            <td><input type="text" name="coursepg" value="{{education.coursepg }}"
+                                    class="form-control"></td>
+                        </tr>
+
+                        <tr>
+                            <th>PG College</th>
+                            <td><input type="text" name="schoolclgpg" value="{{education.schoolclgpg}}"
+                                    class="form-control"></td>
+                        </tr>
+
+                        <tr>
+                            <th>PG Passing Year</th>
+                            <td><input type="text" name="yearofpassingpg" value="{{education.yearofpassingpg}}"
+                                    class="form-control"></td>
+                        </tr>
+
+                        <tr>
+                            <th>PG Percentage</th>
+                            <td><input type="text" name="percentagepg" value="{{education.percentagepg}}"
+                                    class="form-control"></td>
+                        </tr>
+                    </table>
+
+                    <table class=" table table-bordered border-dark ">
+                        <tr>
+                            <th>Graduation Course</th>
+                            <td><input type="text" name="coursegra" value="{{education.coursegra}}"
+                                    class="form-control"></td>
+                        </tr>
+
+                        <tr>
+                            <th>Graduation College</th>
+                            <td><input type="text" name="schoolclggra" value="{{education.schoolclggra}}"
+                                    class="form-control"></td>
+                        </tr>
+
+                        <tr>
+                            <th>Graduation Passing Year</th>
+                            <td><input type="text" name="yearofpassinggra" value="{{education.yearofpassinggra}}"
+                                    class="form-control"></td>
+                        </tr>
+
+                        <tr>
+                            <th>Graduation Percentage</th>
+                            <td><input type="text" name="percentagegra" value="{{education.percentagegra}}"
+                                    class="form-control"></td>
+                        </tr>
+                    </table>
+
+                    <table class=" table table-bordered border-dark ">
+                        <tr>
+                            <th>HSC Course</th>
+                            <td><input type="text" name="coursehsc" value="{{education.coursehsc}}"
+                                    class="form-control"></td>
+                        </tr>
+
+                        <tr>
+                            <th>HSC College</th>
+                            <td><input type="text" name="schoolclghsc" value="{{education.schoolclghsc}}"
+                                    class="form-control"></td>
+                        </tr>
+
+                        <tr>
+                            <th>HSC Passing Year</th>
+                            <td><input type="text" name="yearofpassinghsc" value="{{education.yearofpassinghsc}}"
+                                    class="form-control"></td>
+                        </tr>
+
+                        <tr>
+                            <th>HSC Percentage</th>
+                            <td><input type="text" name="percentagehsc" value="{{education.percentagehsc}}"
+                                    class="form-control"></td>
+                        </tr>
+                    </table>
+
+                    <table class=" table table-bordered border-dark ">
+                        <tr>
+                            <th>SSC Course</th>
+                            <td><input type="text" name="coursessc" value="{{education.coursessc}}"
+                                    class="form-control"></td>
+                        </tr>
+
+                        <tr>
+                            <th>SSC School</th>
+                            <td><input type="text" name="schoolclgssc" value="{{education.schoolclgssc}}"
+                                    class="form-control"></td>
+                        </tr>
+
+                        <tr>
+                            <th>SSC Passing Year</th>
+                            <td><input type="text" name="yearofpassingssc" value="{{education.yearofpassingssc}}"
+                                    class="form-control"></td>
+                        </tr>
+
+                        <tr>
+                            <th>SSC Percentage</th>
+                            <td><input type="text" name="percentagessc" value="{{education.percentagessc}}"
+                                    class="form-control"></td>
+                        </tr>
+                    </table>
+
+                    <center><input type="submit" value="Submit" class="btn btn-primary m-2 px-3"></center>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    {% if error == "no" %}
+    <script>
+        alert("Employee education detail has been updated successfully...");
+        window.location.href = "{% url 'admin_edit_education' education.user.id %}"
+
+    </script>
+    {% endif %}
+
+    {% if error == "yes" %}
+    <script>
+        alert("Something went wrong. Please try again...");
+    </script>
+    {% endif %}
+
+    {% endblock%}
+
+</body>
+
+</html>

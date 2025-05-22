@@ -1,0 +1,63 @@
+{% extends 'admin_base.html' %}
+
+{% block main %}
+<div class="container mt-4">
+    <div class="card shadow bg-body rounded">
+        <div class="card-header bg-primary text-white">
+            <h4>Edit Curent Work Details</h4>
+        </div>
+        <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+                <div class="row mb-3">
+                    <div class="col">
+                        <label for="first_name" class="form-label">First Name</label>
+                        <input type="text" name="first_name" class="form-control" value="{{ employee.user.first_name }}"
+                            required>
+                    </div>
+                    <div class="col">
+                        <label for="last_name" class="form-label">Last Name</label>
+                        <input type="text" name="last_name" class="form-control" value="{{ employee.user.last_name }}"
+                            required>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="empcode" class="form-label">Employee Code</label>
+                    <input type="text" name="empcode" class="form-control" value="{{ employee.empcode }}"
+                        required>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col">
+                        <label for="department" class="form-label">Department</label>
+                        <input type="text" name="empdept" class="form-control" value="{{ employee.empdept }}"
+                            required>
+                    </div>
+                    <div class="col">
+                        <label for="designation" class="form-label">Designation</label>
+                        <input type="text" name="designation" class="form-control" value="{{ employee.designation }}"
+                            required>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col">
+                        <label for="salary" class="form-label">Salary (in Rupees only)</label>
+                        <input type="text" name="salary" class="form-control" value="{{ employee.salary }}"
+                            required>
+                    </div>
+                    <div class="col">
+                        <label for="joiningdate" class="form-label">Joining Date</label>
+                        <input type="date" name="joiningdate" class="form-control" value="{{ employee.joiningdate|default:''|date:'Y-m-d' }}" >
+                    </div>
+                </div>
+
+
+                <button type="submit" class="btn btn-success">Update</button>
+                <a href="{% url 'all_employee' %}" class="btn btn-secondary">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

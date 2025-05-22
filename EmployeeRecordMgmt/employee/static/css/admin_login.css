@@ -1,0 +1,9 @@
+body {
+    background-image: url("/static/images/bgImage.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    opacity: 0.8;
+    min-height: 100vh;
+    overflow: hidden;
+}
